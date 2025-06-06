@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bon anniversaire grosse truie !</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff8f0;
+      text-align: center;
+      padding: 2rem;
+      color: #333;
+      max-width: 600px;
+      margin: auto;
+    }
+    .hidden { display: none; }
+    .reveal {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border: 2px dashed #e67e22;
+      background-color: #fdf2e9;
+      border-radius: 10px;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      width: 250px;
+      font-size: 1rem;
+      border: 1px solid #e67e22;
+      border-radius: 5px;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #cf6f00;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #d35400;
+    }
+  </style>
+</head>
+<body>
+  <div id="page1">
+    <h1>Bon anniversaire (ou plutôt… bonne fête) grosse truie ! 🐷</h1>
+    <p>Voici <em>enfin</em> le fameux lien (oui, il était temps).<br>
+    Tu vas pouvoir découvrir ton <strong>cadeau pour tes 28 ans</strong> (ça, c’est juste pour bien te le rappeler).<br>
+    J’espère que ça va te plaire. En tout cas, j’me suis bien marré à préparer tout ça.<br>
+    Gros bisous.<br>
+    Gros lard ❤️</p>
+    <img src="images/nous.jpg" alt="Photo de nous deux" />
+    <button onclick="showPage('enigme1')">Je suis prête 🔍</button>
+  </div>
+
+  <div id="enigme1" class="hidden">
+    <h2>🔍 Première énigme</h2>
+    <p>Ce lieu te secoue dans tous les sens mais fait battre ton cœur</p>
+    <input id="reponse1" type="text" placeholder="Ta réponse ici..." />
+    <br>
+    <button onclick="checkReponse1()">Valider</button>
+    <div id="revele1" class="reveal hidden">
+      <h3>BIM !</h3>
+      <img src="images/la-ronde.jpg" alt="La Ronde" />
+      <p>Tu l’as trouvée, Sherlock.<br>
+      Pour tes 28 ans, tu vas t’envoyer en l’air (littéralement) dans les manèges de <strong>La Ronde</strong> ! 🎢<br>
+      Prépare-toi à crier comme une perdrix en détresse.<br>
+      Oui oui, c’est déjà réservé. Tu peux hurler de joie maintenant.</p>
+      <button onclick="showPage('enigme2')">Encore une ? 🍹</button>
+    </div>
+  </div>
+
+  <div id="enigme2" class="hidden">
+    <h2>🔍 Deuxième énigme</h2>
+    <p>Tu y vas pour boire… mais surtout pour apprendre à bien le faire</p>
+    <input id="reponse2" type="text" placeholder="Ta réponse ici..." />
+    <br>
+    <button onclick="checkReponse2()">Valider</button>
+    <div id="revele2" class="reveal hidden">
+      <h3>Et voilà, mixologue du dimanche !</h3>
+      <img src="images/cocktail.jpg" alt="Cours de cocktails" />
+      <p>Tu vas suivre un <strong>cours de cocktails québécois</strong> chez <em>Ateliers & Saveurs</em> ! 🍸<br>
+      Shaker, doseur, flair, sucre d’érable — tout y est.<br>
+      Prépare-toi à épater la galerie…<br>
+      Ou à faire des drinks douteux pendant un mois, c’est au choix.</p>
+      <button onclick="showPage('conclusion')">La conclusion 🎉</button>
+    </div>
+  </div>
+
+  <div id="conclusion" class="hidden">
+    <h2>🎉 Félicitations trou de bal !</h2>
+    <img src="confettis.jpg" alt="Fête et confettis" />
+    <p>Tu as découvert tous tes cadeaux.<br>
+    Je te souhaite un anniversaire mémorable, rempli de fun, de rires, et de cocktails réussis (ou presque).<br>
+    Hâte de voir tes exploits à La Ronde et au shaker !<br>
+    Gros bisous, gros lard ❤️</p>
+  </div>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('div').forEach(d => d.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    function checkReponse1() {
+      const rep = document.getElementById("reponse1").value.trim().toLowerCase();
+      if (rep === "la ronde") {
+        document.getElementById("revele1").classList.remove("hidden");
+      } else {
+        alert("Essaie encore, truie !");
+      }
+    }
+
+    function checkReponse2() {
+      const rep = document.getElementById("reponse2").value.trim().toLowerCase();
+      if (rep.includes("cocktail")) {
+        document.getElementById("revele2").classList.remove("hidden");
+      } else {
+        alert("Nope. Bois un verre et réessaie.");
+      }
+    }
+  </script>
+</body>
+</html>
